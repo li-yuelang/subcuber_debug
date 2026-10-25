@@ -113,6 +113,7 @@ template<int StageCountTypeM0, typename PresumTileShapeA, typename PresumTileSha
 using StrassenGemmKernels = cutlass::gemm::device::StrassenGemmKernels<StrassenGroups<StageCountTypeM0>,
                                                                        ScheduleStrassenGroups1,
                                                                        ProblemShape,
+                                                                       ArchTag, OperatorClass,
                                                                        ElementA, LayoutA, cutlass::layout::OriginalLayout,
                                                                        ElementB, LayoutB, cutlass::layout::OriginalLayout,
                                                                        ElementC, LayoutC, cutlass::layout::OriginalLayout,
