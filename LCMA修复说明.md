@@ -75,11 +75,11 @@ timeout 300s python3 lcma_review/check.py \
 
 ## 构建兼容基线用于 A/B 比较
 
-`lcma-tested-baseline` 分支停在历史提交加模板兼容修改，尚未加入正确性修复。与修复版使用同一份依赖准备、构建参数和桥接：
+未修复兼容基线固定为提交 `427937ecac9ac4ab84b00340c744cd17b5e97f5b`（历史提交加模板兼容修改），尚未加入正确性修复。仓库仅保留未修改的 `main` 和已修改的 `lcma-cooperative-fix` 两个分支；对照实验使用固定提交的 detached worktree，不依赖已经移除的基线分支。与修复版使用同一份依赖准备、构建参数和桥接：
 
 ```bash
 git fetch origin
-git worktree add ../subcuber_baseline origin/lcma-tested-baseline
+git worktree add --detach ../subcuber_baseline 427937ecac9ac4ab84b00340c744cd17b5e97f5b
 python3 lcma_review/prepare.py --root ../subcuber_baseline
 python3 lcma_review/verify_source.py --root ../subcuber_baseline --version original
 python3 lcma_review/build.py --source-root ../subcuber_baseline --version original \
